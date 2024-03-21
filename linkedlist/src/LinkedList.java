@@ -40,14 +40,16 @@ public class LinkedList<T> {
 
     public void remove(int index) throws InvalidIndexException {
         Node<T> node = get(index);
-        Node<T> nodePrevious = get(index - 1);
-        nodePrevious.setNext(node.next);
-        node.setNext(null);
 
-        if(index == this.size - 1){
-            this.tail = nodePrevious;
+        if(index == 0){
+            this.header = node.next;
+        } else{
+            Node<T> nodePrevious = get(index - 1);
+            nodePrevious.setNext(node.next);
+            this.tail = this.size - 1 == index ? nodePrevious : this.tail;
         }
 
+        node.setNext(null);
         this.size--;
     }
 

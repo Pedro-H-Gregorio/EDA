@@ -27,6 +27,12 @@ public class DoublyLinkedList<T>{
             node.setNext(this.header);
             this.header.setPrevious(node);
             this.header = node;
+        } else if (index == this.size) {
+            Node<T> previous = get(index - 1);
+            node.setNext(previous.next);
+            node.setPrevious(previous);
+            previous.setNext(node);
+            this.tail = node;
         } else {
             Node<T> previous = get(index - 1);
             node.setNext(previous.next);
@@ -35,24 +41,28 @@ public class DoublyLinkedList<T>{
             previous.setNext(node);
         }
 
-        if(index == this.size){
-            this.tail = node;
-        }
-
         size++;
     }
 
     public void remove(int index) throws InvalidIndexException {
         Node<T> node = get(index);
-        Node<T> nodePrevious = get(index - 1);
-        nodePrevious.setNext(node.next);
-        node.next.setPrevious(nodePrevious);
+
+        if (index == 0){
+            Node<T> nodeNext = get(index + 1);
+            nodeNext.setPrevious(node.previous);
+            this.header = nodeNext;
+        } else if (index == this.size - 1){
+            Node<T> nodePrevious = get(index - 1);
+            nodePrevious.setNext(node.next);
+            this.tail = nodePrevious;
+        } else {
+            Node<T> nodePrevious = get(index - 1);
+            nodePrevious.setNext(node.next);
+            node.next.setPrevious(nodePrevious);
+        }
+
         node.setNext(null);
         node.setPrevious(null);
-
-        if(index == this.size - 1){
-            this.tail = nodePrevious;
-        }
 
         this.size--;
     }
