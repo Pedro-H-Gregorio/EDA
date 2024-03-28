@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/EDA.iml" filepath="$PROJECT_DIR$/.idea/EDA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/circulardoublylinkedlist/circulardoublylinkedlist.iml" filepath="$PROJECT_DIR$/circulardoublylinkedlist/circulardoublylinkedlist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/circularlinkedlist/circularlinkedlist.iml" filepath="$PROJECT_DIR$/circularlinkedlist/circularlinkedlist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/doublylinkedlist/doublylinkedlist.iml" filepath="$PROJECT_DIR$/doublylinkedlist/doublylinkedlist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/linkedlist/linkedlist.iml" filepath="$PROJECT_DIR$/linkedlist/linkedlist.iml" />
+    </modules>
+  </component>
+</project>
