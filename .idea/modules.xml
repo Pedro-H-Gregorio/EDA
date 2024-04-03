@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/circularlinkedlist/circularlinkedlist.iml" filepath="$PROJECT_DIR$/circularlinkedlist/circularlinkedlist.iml" />
       <module fileurl="file://$PROJECT_DIR$/doublylinkedlist/doublylinkedlist.iml" filepath="$PROJECT_DIR$/doublylinkedlist/doublylinkedlist.iml" />
       <module fileurl="file://$PROJECT_DIR$/linkedlist/linkedlist.iml" filepath="$PROJECT_DIR$/linkedlist/linkedlist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ordercirculardoublylinkedlist/ordercirculardoublylinkedlist.iml" filepath="$PROJECT_DIR$/ordercirculardoublylinkedlist/ordercirculardoublylinkedlist.iml" />
     </modules>
   </component>
 </project>
