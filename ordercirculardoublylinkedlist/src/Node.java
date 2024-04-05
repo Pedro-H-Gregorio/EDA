@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Node{
     public Node next;
     public Node previous;
@@ -18,7 +20,11 @@ public class Node{
     public void setPrevious(Node previous) {
         this.previous = previous;
     }
-    public boolean isBigger( Node nodeCompare){
+    public boolean isBigger(Node nodeCompare){
         return this.value > nodeCompare.value;
+    }
+
+    public boolean isEqual(Node nodeCompare){
+        return Objects.equals(this.value, nodeCompare.value);
     }
 }

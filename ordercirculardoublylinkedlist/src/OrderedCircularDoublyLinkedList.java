@@ -14,13 +14,15 @@ public class OrderedCircularDoublyLinkedList {
             this.header.setPrevious(node);
         } else {
             Node temp = this.header;
-            while(temp.isBigger(node) && node.isBigger(this.header)){
+            this.header = node.isBigger(this.header)? this.header: node;
+            while(temp.isBigger(node) && !node.isEqual(this.header)){
                 temp = temp.next;
             }
             node.setNext(temp);
             node.setPrevious(temp.previous);
             temp.previous.setNext(node);
             temp.setPrevious(node);
+
         }
         this.size++;
     }
@@ -33,8 +35,12 @@ public class OrderedCircularDoublyLinkedList {
         if(tamanho() != 1){
             this.header.next.setPrevious(this.header.previous);
             this.header.previous.setNext(this.header.next);
+            this.header = this.header.next;
+            size--;
+            return 1;
         }
         this.header = null;
+        size--;
         return 1;
     }
 

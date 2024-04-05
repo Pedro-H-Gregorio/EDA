@@ -15,6 +15,8 @@ public class Main {
         System.out.println(orderedCircularDoublyLinkedList.getNodo(2).value);
         orderedCircularDoublyLinkedList.adicionar(4);
         System.out.println(orderedCircularDoublyLinkedList.getNodo(0).value);
+        orderedCircularDoublyLinkedList.remover();
+        System.out.println(orderedCircularDoublyLinkedList.getNodo(0).value);
         System.out.println(orderedCircularDoublyLinkedList.tamanho());
     }
 }
