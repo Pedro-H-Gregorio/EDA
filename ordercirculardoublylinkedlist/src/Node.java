@@ -1,27 +1,24 @@
-public class Node<T extends Comparable<T>> {
-    public Node<T> next;
-    public Node<T> previous;
-    public T value;
+public class Node{
+    public Node next;
+    public Node previous;
+    public Integer value;
 
 
-    public Node(T value){
+    public Node(Integer value){
         this.next = null;
         this.previous = null;
         this.value = value;
 
     }
 
-    public void setNext(Node<T> next) {
+    public void setNext(Node next) {
         this.next = next;
     }
 
-    public void setPrevious(Node<T> previous) {
+    public void setPrevious(Node previous) {
         this.previous = previous;
     }
-    public boolean isBigger(Node<T> nodeCompare){
-        return compareTo(nodeCompare.value) > 0;
-    }
-    private int compareTo( T valueCompare){
-        return this.value.compareTo(valueCompare);
+    public boolean isBigger( Node nodeCompare){
+        return this.value > nodeCompare.value;
     }
 }

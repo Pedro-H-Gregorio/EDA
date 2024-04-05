@@ -1,20 +1,20 @@
-public class CircularDoublyLinkedList<T extends Comparable<T>>{
-    private Node<T> header;
+public class OrderedCircularDoublyLinkedList {
+    private Node header;
     private int size;
 
-    public CircularDoublyLinkedList(){
+    public OrderedCircularDoublyLinkedList(){
         this.header = null;
         this.size = 0;
     }
-    public void adicionar(T value){
-        Node<T> node = new Node<>(value);
+    public void adicionar(Integer value){
+        Node node = new Node(value);
         if(this.header == null){
             this.header = node;
             this.header.setNext(node);
             this.header.setPrevious(node);
         } else {
-            Node<T> temp = this.header;
-            while(temp.isBigger(node)){
+            Node temp = this.header;
+            while(temp.isBigger(node) && node.isBigger(this.header)){
                 temp = temp.next;
             }
             node.setNext(temp);
@@ -39,14 +39,14 @@ public class CircularDoublyLinkedList<T extends Comparable<T>>{
     }
 
     public int remover(int index) {
-        Node<T> node = getNodo(index);
+        Node node = getNodo(index);
 
         if (node == null){
             return 0;
         }
 
         if (index == 0){
-            Node<T> nodeNext = node.next;
+            Node nodeNext = node.next;
             nodeNext.setPrevious(node.previous);
             node.previous.setNext(nodeNext);
             this.header = nodeNext;
@@ -54,7 +54,7 @@ public class CircularDoublyLinkedList<T extends Comparable<T>>{
             node.previous.setNext(this.header);
             this.header.setPrevious(node.previous);
         } else {
-            Node<T> nodePrevious = node.previous;
+            Node nodePrevious = node.previous;
             nodePrevious.setNext(node.next);
             node.next.setPrevious(nodePrevious);
         }
@@ -66,7 +66,7 @@ public class CircularDoublyLinkedList<T extends Comparable<T>>{
         return 1;
     }
 
-    public Node<T> getNodo(int index) {
+    public Node getNodo(int index) {
         if(this.size-1 < index){
             return null;
         }
@@ -76,7 +76,7 @@ public class CircularDoublyLinkedList<T extends Comparable<T>>{
         return getNodo(this.header, 0 ,index);
     }
 
-    private Node<T> getNodo(Node<T> node, int indexNode, int indexRequired){
+    private Node getNodo(Node node, int indexNode, int indexRequired){
         if (indexNode == indexRequired) {
             return node;
         }

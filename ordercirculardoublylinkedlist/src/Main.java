@@ -1,20 +1,20 @@
 public class Main {
     public static void main(String[] args) {
-        CircularDoublyLinkedList<String> circularDoublyLinkedList = new CircularDoublyLinkedList<>();
-        circularDoublyLinkedList.adicionar("Pedro");
-        circularDoublyLinkedList.adicionar("Alan");
-        circularDoublyLinkedList.adicionar("Isaac");
+        OrderedCircularDoublyLinkedList orderedCircularDoublyLinkedList = new OrderedCircularDoublyLinkedList();
+        orderedCircularDoublyLinkedList.adicionar(5);
+        orderedCircularDoublyLinkedList.adicionar(6);
+        orderedCircularDoublyLinkedList.adicionar(7);
 
-        System.out.println(circularDoublyLinkedList.getNodo(0).value);
-        System.out.println(circularDoublyLinkedList.getNodo(1).value);
-        System.out.println(circularDoublyLinkedList.getNodo(2).value);
-        System.out.println(circularDoublyLinkedList.tamanho());
-        circularDoublyLinkedList.remover(2);
-        System.out.println(circularDoublyLinkedList.getNodo(2));
-        circularDoublyLinkedList.adicionar("Abraão");
-        System.out.println(circularDoublyLinkedList.getNodo(2).value);
-        circularDoublyLinkedList.adicionar("Rickelme");
-        System.out.println(circularDoublyLinkedList.getNodo(0).value);
-        System.out.println(circularDoublyLinkedList.tamanho());
+        System.out.println(orderedCircularDoublyLinkedList.getNodo(0).value);
+        System.out.println(orderedCircularDoublyLinkedList.getNodo(1).value);
+        System.out.println(orderedCircularDoublyLinkedList.getNodo(2).value);
+        System.out.println(orderedCircularDoublyLinkedList.tamanho());
+        orderedCircularDoublyLinkedList.remover(2);
+        System.out.println(orderedCircularDoublyLinkedList.getNodo(2));
+        orderedCircularDoublyLinkedList.adicionar(8);
+        System.out.println(orderedCircularDoublyLinkedList.getNodo(2).value);
+        orderedCircularDoublyLinkedList.adicionar(4);
+        System.out.println(orderedCircularDoublyLinkedList.getNodo(0).value);
+        System.out.println(orderedCircularDoublyLinkedList.tamanho());
     }
 }
