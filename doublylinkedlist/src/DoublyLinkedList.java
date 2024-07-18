@@ -47,7 +47,10 @@ public class DoublyLinkedList<T>{
     public void remove(int index) throws InvalidIndexException {
         Node<T> node = get(index);
 
-        if (index == 0){
+        if(getSize() == 1){
+            this.tail = null;
+            this.header = null;
+        } else if (index == 0){
             Node<T> nodeNext = node.next;
             nodeNext.setPrevious(node.previous);
             this.header = nodeNext;

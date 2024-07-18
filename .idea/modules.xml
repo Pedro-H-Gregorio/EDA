@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/EDA.iml" filepath="$PROJECT_DIR$/.idea/EDA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TabelaHashAluno/TabelaHashAluno.iml" filepath="$PROJECT_DIR$/TabelaHashAluno/TabelaHashAluno.iml" />
       <module fileurl="file://$PROJECT_DIR$/circulardoublylinkedlist/circulardoublylinkedlist.iml" filepath="$PROJECT_DIR$/circulardoublylinkedlist/circulardoublylinkedlist.iml" />
       <module fileurl="file://$PROJECT_DIR$/circularlinkedlist/circularlinkedlist.iml" filepath="$PROJECT_DIR$/circularlinkedlist/circularlinkedlist.iml" />
       <module fileurl="file://$PROJECT_DIR$/doublylinkedlist/doublylinkedlist.iml" filepath="$PROJECT_DIR$/doublylinkedlist/doublylinkedlist.iml" />

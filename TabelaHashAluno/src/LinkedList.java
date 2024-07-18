@@ -19,7 +19,7 @@ public class LinkedList<T> {
         this.size++;
     }
 
-    public void add(T value, int index) throws InvalidIndexException {
+    public void add(T value, int index) {
         Node<T> node = new Node(value);
 
         if(index == 0){
@@ -38,13 +38,13 @@ public class LinkedList<T> {
         size++;
     }
 
-    public void remove(int index) throws InvalidIndexException {
+    public void remove(int index)  {
         Node<T> node = get(index);
 
         if (getSize() == 1){
             this.header = null;
             this.tail = null;
-        } else if(index == 0){
+        } else if (index == 0){
             this.header = node.next;
         } else{
             Node<T> nodePrevious = get(index - 1);
@@ -56,9 +56,27 @@ public class LinkedList<T> {
         this.size--;
     }
 
-    public Node<T> get(int index) throws InvalidIndexException {
+    public void remove(T value)  {
+        remove(getIndex(value));
+    }
+
+    private int getIndex(T value) {
+        Node<T> node = this.header;
+        int count = 0;
+        while(node.value != value){
+            node = node.next;
+            count++;
+        }
+        return count;
+    }
+
+    public Node<T> get(T value){
+        return get(getIndex(value));
+    }
+
+    public Node<T> get(int index) {
         if(this.size-1 < index){
-            throw new InvalidIndexException();
+            return null;
         }
         return get(this.header, 0 ,index);
     }
