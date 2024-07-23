@@ -1,7 +1,8 @@
 package interfaces;
 
-public interface IDataPersister<T,k> {
-    void add(T object);
-    void remove(T object);
-    T get(k key);
+public interface IDataPersister<k> {
+    void add(IObjectModel<k,?> object);
+
+    void remove(k key);
+    IObjectModel<k,?> get(k key);
 }
