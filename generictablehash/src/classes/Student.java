@@ -2,17 +2,21 @@ package classes;
 
 import interfaces.IObjectModel;
 
-public class Student implements IObjectModel<Integer, String> {
+public class Student extends ObjectModel {
     private Integer registration;
     private String name;
 
-    @Override
-    public Integer getKey() {
+    public Student(String name, Integer registration){
+        this.name = name;
+        this.registration = registration;
+        this.setKey(registration);
+    }
+
+    public String getName() {
+        return this.name;
+    }
+    public Integer getRegistration() {
         return this.registration;
     }
 
-    @Override
-    public String getValue() {
-        return this.name;
-    }
 }

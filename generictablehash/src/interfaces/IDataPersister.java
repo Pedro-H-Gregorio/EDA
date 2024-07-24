@@ -1,8 +1,15 @@
 package interfaces;
 
-public interface IDataPersister<k> {
-    void add(IObjectModel<k,?> object);
+import classes.Node;
 
-    void remove(k key);
-    IObjectModel<k,?> get(k key);
+import java.util.LinkedList;
+
+public interface IDataPersister<T> {
+    void add(T object);
+    void remove(int index);
+    Node<T> get(int index);
+    int getSize();
+    boolean isEmpty();
+    IDataPersister<T> getInstance();
+    T[] toArray();
 }
