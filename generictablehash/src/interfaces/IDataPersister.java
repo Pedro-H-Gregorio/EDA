@@ -10,6 +10,5 @@ public interface IDataPersister<T> {
     Node<T> get(int index);
     int getSize();
     boolean isEmpty();
-    IDataPersister<T> getInstance();
-    T[] toArray();
+    Object[] toArray();
 }

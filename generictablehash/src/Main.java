@@ -5,15 +5,15 @@ import classes.Student;
 public class Main {
     public static void main(String[] args) {
         Student studentOne = new Student("Ray",1);
-        Student studenttwo = new Student("Renata",2);
+        Student studentTwo = new Student("Renata",2);
         Student studentTree = new Student("Isaac",3);
         Student studentFour = new Student("Pedro",4);
 
-        HashTable classe = new HashTable(new CircularLinkedList[32]);
-        classe.add(studentOne);
-        classe.add(studenttwo);
-        classe.add(studentTree);
-        classe.add(studentFour);
+        HashTable<Student> classe = new HashTable<Student>();
+        classe.add(studentOne.getRegistration(),studentOne);
+        classe.add(studentTwo.getRegistration(), studentTwo);
+        classe.add(studentTree.getRegistration(),studentTree);
+        classe.add(studentFour.getRegistration(), studentFour);
 
         System.out.println(classe.get(1).getName());
         System.out.println(classe.get(2).getName());

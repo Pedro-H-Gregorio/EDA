@@ -4,42 +4,55 @@ import interfaces.IDataPersister;
 import interfaces.IObjectModel;
 import interfaces.ITableHash;
 
-public class HashTable implements ITableHash<IObjectModel> {
+public class HashTable<T> implements ITableHash<T> {
 
-    private IDataPersister<IObjectModel>[] vector;
+    private IDataPersister<IObjectModel<T>>[] vector = new CircularLinkedList[32];
 
-    public HashTable(IDataPersister<IObjectModel>[] storage){
-        this.vector = storage;
+    private int hash(int key){
+        return  key % this.vector.length;
     }
 
-    private int hash(Object key){
-        return (int) key % this.vector.length;
+    public HashTable(){
+        for(int index = 0; index < this.vector.length; index++) vector[index] = new CircularLinkedList<IObjectModel<T>>();
     }
     @Override
-    public void add(IObjectModel object) {
-        int hash = hash(object.getKey());
-        if (vector[hash] == null){
-            vector[hash] = vector[hash].getInstance();
+    public void add(int key ,T object) {
+        IObjectModel<T> objectModel = new ObjectModel<>(key,object);
+        int hash = hash(objectModel.getKey());
+        vector[hash].add(objectModel);
+    }
+
+    @Override
+    public int remove(int key) {
+        int index = getIndex(key);
+        if ( index == -1) {
+            return index;
         }
-        vector[hash].add(object);
-    }
-
-    @Override
-    public void remove(Object key) {
-        int index = getIndex(key);
         this.vector[hash(key)].remove(index);
+        return 0;
     }
 
     @Override
-    public IObjectModel get(Object key) {
+    public T get(int key) {
         int index = getIndex(key);
-        return index == -1? null: this.vector[hash(key)].get(index).value;
+
+        if ( index == -1) {
+            return null;
+        }
+
+        IObjectModel<T> result = this.vector[hash(key)].get(index).value;
+        return result.getValue();
     }
 
-    private int getIndex(Object key){
-        IObjectModel[] list = this.vector[hash(key)].toArray();
+    private int getIndex(int key){
+        Object[] list = this.vector[hash(key)].toArray();
+
+        if(list == null){
+            return -1;
+        }
+
         for(int i = 0; i<list.length; i++){
-            if(key.equals(list[i].getKey())){
+            if(key == (((IObjectModel<T>) list[i]).getKey())){
                 return i;
             }
         }

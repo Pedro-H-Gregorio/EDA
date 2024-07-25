@@ -4,8 +4,6 @@ import classes.Node;
 import interfaces.IDataPersister;
 
 public class CircularLinkedList<T> implements IDataPersister<T> {
-
-    private IDataPersister<T> instance;
     private Node header;
     private int size = 0;
 
@@ -75,22 +73,14 @@ public class CircularLinkedList<T> implements IDataPersister<T> {
     }
 
     @Override
-    public IDataPersister<T> getInstance() {
-        if (instance == null) {
-            instance = new CircularLinkedList<>();
-        }
-        return instance;
-    }
-
-    @Override
-    public T[] toArray() {
-        Object[] array = new Object[getSize()];
+    public Object[] toArray() {
+        Object[] array = new Object[getSize()] ;
         Node<T> node = this.header;
         for(int i = 0; i<getSize(); i++){
-            array[i] = node;
+            array[i] = node.value;
             node = node.next;
         }
-        return array.length == 0? null : (T[]) array;
+        return array.length == 0? null :  array;
     }
 
     public boolean isEmpty(){
