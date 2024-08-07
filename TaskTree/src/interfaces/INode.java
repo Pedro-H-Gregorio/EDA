@@ -7,10 +7,8 @@ public interface INode {
     void setRightChild(INode rightChild);
     void setLeftChild(INode leftChild);
 
-    void setRightChild(INode rightChild);
-
-    void setLeftChild(INode leftChild);
-
     Integer compareTo(INode node);
+    INode getFather();
+    void setFather(INode father);
 
 }

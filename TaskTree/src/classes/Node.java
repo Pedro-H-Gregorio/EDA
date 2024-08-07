@@ -6,9 +6,18 @@ public class Node implements INode {
     private final Integer value;
     private INode rightChild;
     private INode leftChild;
+    private INode father;
 
     public Node(Integer value){
         this.value = value;
+    }
+    @Override
+    public INode getFather() {
+        return this.father;
+    }
+    @Override
+    public void setFather(INode father) {
+        this.father = father;
     }
 
     @Override
@@ -36,6 +45,6 @@ public class Node implements INode {
 
     @Override
     public Integer compareTo(INode node) {
-        return this.value >= node.getValue()? 0 : -1;
+        return this.value <= node.getValue()? 0 : -1;
     }
 }

@@ -1,6 +1,6 @@
 package interfaces;
 
-public interface Tree {
+public interface ITree {
     void add(Integer value);
     int removeLast();
     int removeFirst();
