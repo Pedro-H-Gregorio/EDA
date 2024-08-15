@@ -63,10 +63,59 @@ public class Tree implements ITree {
         return search(this.root,value);
     }
 
+    @Override
+    public void print_pre_order() {
+        pre_order(this.root);
+        System.out.println();
+    }
+
+    @Override
+    public void print_in_order() {
+        in_order(this.root);
+        System.out.println();
+    }
+
+    @Override
+    public void print_post_order() {
+        post_order(this.root);
+        System.out.println();
+    }
+
+    private void pre_order(INode node){
+        System.out.printf("->%d",node.getValue());
+        if(node.getLeftChild() != null){
+            pre_order(node.getLeftChild());
+        }
+        if(node.getRightChild() != null){
+            pre_order(node.getRightChild());
+        }
+    }
+
+    private void in_order(INode node){
+        if(node.getLeftChild() != null){
+            in_order(node.getLeftChild());
+        }
+        System.out.printf("->%d",node.getValue());
+        if(node.getRightChild() != null){
+            in_order(node.getRightChild());
+        }
+    }
+
+    private void post_order(INode node){
+        if(node.getLeftChild() != null){
+            post_order(node.getLeftChild());
+        }
+        if(node.getRightChild() != null){
+            post_order(node.getRightChild());
+        }
+        System.out.printf("->%d",node.getValue());
+    }
+
 
     private void addInPosition(INode nodeCurrent, INode nodeNew){
         if(nodeCurrent.compareTo(nodeNew) == 0){
             if (nodeCurrent.getRightChild() == null) {
+                nodeNew.setFather(nodeCurrent);
                 nodeCurrent.setRightChild(nodeNew);
             } else {
                 addInPosition(nodeCurrent.getRightChild(), nodeNew);
@@ -74,12 +123,13 @@ public class Tree implements ITree {
 
         } else {
             if (nodeCurrent.getLeftChild() == null) {
+                nodeNew.setFather(nodeCurrent);
                 nodeCurrent.setLeftChild(nodeNew);
             } else {
                 addInPosition(nodeCurrent.getLeftChild(), nodeNew);
             }
         }
-        nodeNew.setFather(nodeCurrent);
+
     }
 
     private boolean search (INode node, Integer value){
