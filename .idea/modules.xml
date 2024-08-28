@@ -13,6 +13,7 @@
       <module fileurl="file://$PROJECT_DIR$/ordercirculardoublylinkedlist/ordercirculardoublylinkedlist.iml" filepath="$PROJECT_DIR$/ordercirculardoublylinkedlist/ordercirculardoublylinkedlist.iml" />
       <module fileurl="file://$PROJECT_DIR$/storagecontroll/storagecontroll.iml" filepath="$PROJECT_DIR$/storagecontroll/storagecontroll.iml" />
       <module fileurl="file://$PROJECT_DIR$/tabelahashaluno/tabelahashaluno.iml" filepath="$PROJECT_DIR$/tabelahashaluno/tabelahashaluno.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tasktreeavl/tasktreeavl.iml" filepath="$PROJECT_DIR$/tasktreeavl/tasktreeavl.iml" />
     </modules>
   </component>
 </project>
