@@ -14,11 +14,7 @@ public class Tree implements ITree {
         } else {
             addInPosition(this.root, node);
         }
-        calculateHeight(root);
-        calculateBalancingFactor(root);
-        if(root.getFather() != null) {
-            this.root = root.getFather();
-        }
+        organizeTree();
     }
 
     @Override
@@ -37,7 +33,7 @@ public class Tree implements ITree {
         } else {
             nodeMin.getFather().setLeftChild(null);
         }
-
+        organizeTree();
         return 0;
     }
 
@@ -58,7 +54,7 @@ public class Tree implements ITree {
         } else {
             nodeMax.getFather().setRightChild(null);
         }
-
+        organizeTree();
         return 0;
     }
 
@@ -83,6 +79,14 @@ public class Tree implements ITree {
     public void print_post_order() {
         post_order(this.root);
         System.out.println();
+    }
+
+    private void organizeTree(){
+        calculateHeight(root);
+        calculateBalancingFactor(root);
+        if(root.getFather() != null) {
+            this.root = root.getFather();
+        }
     }
 
     private void pre_order(INode node){
@@ -151,6 +155,13 @@ public class Tree implements ITree {
 
     private void leftRotation(INode node){
         node.getRightChild().setFather(node.getFather());
+        if(node.getFather() != null) {
+            if (node.getFather().getLeftChild() == node){
+                node.getFather().setLeftChild(node.getRightChild());
+            } else {
+                node.getFather().setRightChild(node.getRightChild());
+            }
+        }
         node.setFather(node.getRightChild());
         INode nodeRight = node.getRightChild().getLeftChild();
         node.getRightChild().setLeftChild(node);
@@ -159,6 +170,13 @@ public class Tree implements ITree {
 
     private void rightRotation(INode node){
         node.getLeftChild().setFather(node.getFather());
+        if(node.getFather() != null){
+            if (node.getFather().getLeftChild() == node){
+                node.getFather().setLeftChild(node.getLeftChild());
+            } else {
+                node.getFather().setRightChild(node.getLeftChild());
+            }
+        }
         node.setFather(node.getLeftChild());
         INode nodeLeft = node.getLeftChild().getRightChild();
         node.getLeftChild().setRightChild(node);
@@ -167,32 +185,37 @@ public class Tree implements ITree {
 
     private int calculateBalancingFactor(INode node){
         if (node != null) {
-            int leftChildHeight = node.getLeftChild() == null ? 0 : node.getLeftChild().getHeight();
-            int rightChildHeight = node.getRightChild() == null ? 0 : node.getRightChild().getHeight();
+            int balancingFactorChildLeft = calculateBalancingFactor(node.getLeftChild());
+            int balancingFactorChildRight = calculateBalancingFactor(node.getRightChild());
+            int leftChildHeight = node.getLeftChild() == null ? -1 : node.getLeftChild().getHeight();
+            int rightChildHeight = node.getRightChild() == null ? -1 : node.getRightChild().getHeight();
             int balancingFactor = leftChildHeight - rightChildHeight;
             if (balancingFactor > 1){
-                int balancingFactorChildLeft = calculateBalancingFactor(node.getLeftChild());
                 if (balancingFactorChildLeft < 0){
                     leftRotation(node.getLeftChild());
                 }
                 rightRotation(node);
             } else if (balancingFactor < -1) {
-                int balancingFactorChildRight = calculateBalancingFactor(node.getLeftChild());
                 if (balancingFactorChildRight > 0){
                     rightRotation(node.getRightChild());
                 }
                 leftRotation(node);
             }
+            calculateHeight(node.getFather());
             return balancingFactor;
         }
-        return 0;
+        return -1;
     }
 
     private void calculateHeight(INode node){
-        if (node != null && (node.getRightChild() != null || node.getLeftChild() != null)) {
-            node.setHeight(calculateHeightNode(node));
-            calculateHeight(node.getLeftChild());
-            calculateHeight(node.getRightChild());
+        if(node != null){
+            if (node.getRightChild() != null || node.getLeftChild() != null) {
+                node.setHeight(calculateHeightNode(node));
+                calculateHeight(node.getLeftChild());
+                calculateHeight(node.getRightChild());
+            } else {
+            node.setHeight(0);
+            }
         }
     }
     private int calculateHeightNode(INode node){
