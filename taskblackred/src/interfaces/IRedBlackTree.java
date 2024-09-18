@@ -1,6 +1,6 @@
 package interfaces;
 
 public interface IRedBlackTree {
-    void insert(int key);
+    void add(int key);
     void inorderPrint();
 }

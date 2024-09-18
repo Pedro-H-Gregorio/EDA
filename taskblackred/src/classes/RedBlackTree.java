@@ -94,7 +94,7 @@ public class RedBlackTree implements IRedBlackTree {
         root.setColor(false);
     }
 
-    public void insert(int key) {
+    public void add(int key) {
         INode node = new Node(key);
         node.setLeftChild(TNULL);
         node.setRightChild(TNULL);

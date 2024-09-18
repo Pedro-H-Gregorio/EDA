@@ -4,12 +4,12 @@ import interfaces.IRedBlackTree;
 public class Main {
     public static void main(String[] args) {
         IRedBlackTree tree = new RedBlackTree();
-        tree.insert(55);
-        tree.insert(40);
-        tree.insert(65);
-        tree.insert(60);
-        tree.insert(75);
-        tree.insert(57);
+        tree.add(55);
+        tree.add(40);
+        tree.add(65);
+        tree.add(60);
+        tree.add(75);
+        tree.add(57);
 
         tree.inorderPrint();
     }
